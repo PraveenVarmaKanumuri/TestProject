@@ -1,19 +1,20 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+- master
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+- task: sftpupload@1
+  inputs:
+    sourceFolder: '$(build.sourcesDirectory)'
+    contents: '**'
+    targetFolder: '/home/u578789532/domains/praveenkanumuri.com/public_html/TestProject'
+    host: '153.92.6.54'
+    port: '65002'
+    username: 'u578789532'
+    password: '9440677784@pP'
+    cleanTargetFolder: true
+    
