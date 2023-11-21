@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col sudoku-board {{activeNumber ? 'highlight-' + activeNumber : ''}}">
+      <div class="row sudoku-row" *ngFor="let row of board.cells; let i = index">
+        <div class="col sudoku-col" *ngFor="let cell of row; let j = index">
+          <span *ngIf="cell.isVisible" class="highlight-{{cell.value}}">{{cell.value}}</span>
+          <span *ngIf="!cell.isVisible" class="{{cell.highlight() ? 'highlight-' + cell.guess : 'wrong'}} {{cell.isRight() ? '' : 'incomplete'}}" (click)="onCellSelect(cell)">{{cell.guess}}</span>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="row mt-2">
+      <div class="col btn-group">
+        <button 
+          *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9]" 
+          #btn 
+          (click)="setActive($event, number)" 
+          [class.active]="activeNumber == number" 
+          type="button" 
+          class="btn btn-primary">
+          {{number}}
+        </button>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col" id="timer">
+        <app-sudoku-timer [isDone]="isDone"></app-sudoku-timer>
+      </div>
+    </div>
+</div>

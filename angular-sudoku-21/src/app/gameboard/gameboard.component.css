@@ -1,0 +1,64 @@
+.sudoku-board {
+  font-size: 1.5rem;
+  border: 1px double #aaa;
+  border-radius: 4px;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.sudoku-board .col {
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  padding: 0;
+  line-height: 3rem;
+  display: inline-grid;
+}
+
+.highlight-1 .highlight-1,
+.highlight-2 .highlight-2,
+.highlight-3 .highlight-3,
+.highlight-4 .highlight-4,
+.highlight-5 .highlight-5,
+.highlight-6 .highlight-6,
+.highlight-7 .highlight-7,
+.highlight-8 .highlight-8,
+.highlight-9 .highlight-9, .highlight {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-group {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.sudoku-board .col span {
+  display: block;
+  margin: 2px;
+  border-radius: 4px;
+  transition: background-color 0.25s;
+  cursor: pointer;
+}
+
+.sudoku-board .col span.wrong {
+  background: red;
+  color: white;
+}
+
+.sudoku-row .sudoku-col:last-child {
+  border-right: 0 none;
+}
+
+.sudoku-row:last-child .sudoku-col {
+  border-bottom: 0 none;
+}
+
+.sudoku-row:nth-child(3) .sudoku-col,
+.sudoku-row:nth-child(6) .sudoku-col {
+  border-bottom-color: #333;
+}
+
+.sudoku-row .sudoku-col:nth-child(3),
+.sudoku-row .sudoku-col:nth-child(6) {
+  border-right-color: #333;
+}
